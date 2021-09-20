@@ -1,0 +1,46 @@
+---
+title: "ds202_lab2"
+author: "Shiv Patel"
+date: "9/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(classdata)
+library(ggplot2)
+data(choco)
+str(choco) 
+```
+
+```{r}
+hist(choco$CocoaPercent)
+boxplot(choco$CocoaPercent)
+```
+1. The distribution of the cocoa percent is pretty evenly distributed; however, the spread of the data is very narrow. A majority of the chocolates has percentages between 65-75. There are also many outliers that are apparent from the box and whisker plot. 
+
+```{r}
+ggplot(data=choco, aes(x=choco$CountryBeanOrigin, y=choco$Rating)) + geom_bar(stat="identity")
+```
+
+2. It appears that the country of origin drastically effects the rating of the  bean. The bean ratings are at drastic extremes depending on the country.
+
+```{r}
+ggplot(data=choco, aes(x=choco$CocoaPercent, y=choco$Rating)) + geom_bar(stat="identity")
+```
+3. It appears that most of the ratings are evenly distributed based on the cocoa percentages with the exception of the 70 percent. There appears to be a large disparity between that rating and the rest of the percentages
+
+```{r}
+ggplot(data=choco, aes(x=choco$SpecificBeanOrigin, y=choco$Rating)) + geom_bar(stat="identity")
+```
+
+4. It seems that depending on the specific bean orgin, the ratings are evenly distributed across the board. The spread is very high and there does not seem to be a normal distribution. It does not seem that the specific origin effects the rating. 
+
+```{r}
+ggplot(data=choco, aes(x=choco$Location, y=choco$Rating)) + geom_bar(stat="identity")
+ggplot(data=choco, aes(x=choco$Ingredients, y=choco$Rating)) + geom_bar(stat="identity")
+```
+5. I am looking to see if the ingredients and the locatoin at which the chocolates are manufactured creates a differences in their ratings. It appears chocolates a few certain inredients very obviously have high spikes in their ratings compared to those that don't. It also seems that there is a specific location that is manufacturing a large portion of the highly rated chocolates. There seems to be one country that is producing chocolates that are rated much higher than the rest. 
